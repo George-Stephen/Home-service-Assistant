@@ -11,20 +11,24 @@
         android:textColor="@color/colorPrimaryText"
         android:textStyle="bold"/>
 
-    <SearchView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="296dp"
+    <EditText
         android:id="@+id/search_bar"
-        android:background="@color/colorTextIcons"/>
+        android:layout_width="match_parent"
+        android:layout_height="41dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="298dp"
+        android:background="@color/colorPrimaryLight"
+        android:hint="Search"
+        android:inputType="text"
+        android:textSize="23sp" />
 
     <Button
         android:id="@+id/search_button"
-        android:layout_width="match_parent"
+        android:layout_width="387dp"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="195dp"
+        android:layout_marginLeft="10sp"
         android:text="Search for a solution"
         android:textColor="@color/colorSecondaryText" />
 
