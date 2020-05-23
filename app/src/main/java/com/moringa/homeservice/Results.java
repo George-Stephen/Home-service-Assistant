@@ -16,7 +16,7 @@ import butterknife.ButterKnife;
 
 public class Results extends AppCompatActivity {
     private String[] results = new String[]{
-            "Assess the situation","Record the nature of the situation ","Contact the nearest service provider",
+            "Assess the situation","Record the nature of the situation ","Contact the nearest service provider in case of any network query",
             "Check if any external resources  are required","Purchase any additional resources at the nearest stores","Attempt to resolve the situation",
             "Reassess the situation","Record if any errors have not been fixed",
             "If the situation cannot be fixed at home,call your nearest repair assistant","If not,Go to your nearest repair man for further assistance"
