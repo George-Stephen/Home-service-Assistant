@@ -18,6 +18,7 @@
         android:layout_marginBottom="416dp"
         android:hint="Full name"
         android:inputType="text"
+        android:id="@+id/fullName"
         android:textColor="@color/colorPrimaryText" />
 
     <EditText
@@ -27,6 +28,7 @@
         android:layout_marginBottom="338dp"
         android:hint="Username"
         android:inputType="text"
+        android:id="@+id/Username"
         android:textColor="@color/colorPrimaryText" />
 
     <EditText
@@ -35,6 +37,7 @@
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="270dp"
         android:hint="Email Address"
+        android:id="@+id/EmailAddress"
         android:inputType="textEmailAddress"
         android:textColor="@color/colorPrimaryText" />
 
@@ -45,6 +48,7 @@
         android:layout_marginBottom="124dp"
         android:hint="Password"
         android:inputType="textPassword"
+        android:id="@+id/password"
         android:textColor="@color/colorPrimaryText" />
 
     <EditText
@@ -54,6 +58,7 @@
         android:layout_marginBottom="193dp"
         android:hint="Phone number"
         android:inputType="phone"
+        android:id="@+id/Phone"
         android:textColor="@color/colorPrimaryText" />
 
     <Button
