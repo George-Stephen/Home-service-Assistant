@@ -3,10 +3,7 @@
 George Stephen Wangui- yazz777stevie@gmail.com \n
 Software Developer
 ## Description
-This is an android application meant to help users with their repairs that may occur from time to time.It is meant to assist people to
-get repairs on short notice and gives advice on what to do in short time incase the situation is minor and even gives who to call <br/>
-in case the situation is major that the user cannot handle it on his/her own.It gives directions to any people who would be able to help <br/>
-them.
+This is an android application meant to help users with their repairs that may occur from time to time.It is meant to assist people to get repairs on short notice and gives advice on what to do in short time incase the situation is minor and even gives who to call <br/>in case the situation is major that the user cannot handle it on his/her own.It gives directions to any people who would be able to help them.
 ## Technologies 
 * Android Studio
 * Java
