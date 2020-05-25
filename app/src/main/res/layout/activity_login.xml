@@ -20,7 +20,8 @@
         android:layout_marginBottom="301dp"
         android:hint="Email"
         android:inputType="textEmailAddress"
-        android:textColor="@color/colorPrimaryText" />
+        android:textColor="@color/colorPrimaryText"
+        android:textColorHint="@color/colorTextIcons" />
 
     <EditText
         android:id="@+id/loginPassword"
@@ -30,7 +31,8 @@
         android:layout_marginBottom="195dp"
         android:hint="Password"
         android:inputType="textPassword"
-        android:textColor="@color/colorPrimaryText" />
+        android:textColor="@color/colorPrimaryText"
+        android:textColorHint="@color/colorTextIcons" />
 
     <Button
         android:id="@+id/loginButton"
