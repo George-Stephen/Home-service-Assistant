@@ -12,54 +12,64 @@
         android:textStyle="bold"/>
 
     <EditText
+        android:id="@+id/fullName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="416dp"
+        android:backgroundTint="@color/colorPrimaryLight"
         android:hint="Full name"
         android:inputType="text"
-        android:id="@+id/fullName"
-        android:textColor="@color/colorPrimaryText" />
+        android:textColor="@color/colorPrimaryText"
+        android:textColorHint="@color/colorPrimaryText" />
 
     <EditText
+        android:id="@+id/Username"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="338dp"
+        android:backgroundTint="@color/colorPrimaryLight"
         android:hint="Username"
         android:inputType="text"
-        android:id="@+id/Username"
-        android:textColor="@color/colorPrimaryText" />
+        android:textColor="@color/colorPrimaryText"
+        android:textColorHint="@color/colorPrimaryText" />
 
     <EditText
+        android:id="@+id/EmailAddress"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="270dp"
+        android:backgroundTint="@color/colorPrimaryLight"
         android:hint="Email Address"
-        android:id="@+id/EmailAddress"
         android:inputType="textEmailAddress"
-        android:textColor="@color/colorPrimaryText" />
+        android:textColor="@color/colorPrimaryText"
+        android:textColorHint="@color/colorPrimaryText" />
 
     <EditText
+        android:id="@+id/password"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="124dp"
+        android:backgroundTint="@color/colorPrimaryLight"
         android:hint="Password"
         android:inputType="textPassword"
-        android:id="@+id/password"
-        android:textColor="@color/colorPrimaryText" />
+        android:textColor="@color/colorPrimaryText"
+        android:textColorHint="@color/colorPrimaryText" />
 
     <EditText
+        android:id="@+id/Phone"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="193dp"
+        android:backgroundTint="@color/colorPrimaryLight"
         android:hint="Phone number"
         android:inputType="phone"
-        android:id="@+id/Phone"
-        android:textColor="@color/colorPrimaryText" />
+        android:textColor="@color/colorPrimaryText"
+        android:textColorHint="@color/colorPrimaryText" />
 
     <Button
         android:id="@+id/signUp"
