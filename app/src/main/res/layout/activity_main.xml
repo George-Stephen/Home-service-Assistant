@@ -11,7 +11,8 @@
         android:text="Home service Assistant"
         android:textColor="@color/colorPrimaryText"
         android:textSize="30sp"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:id="@+id/mainHeader"/>
 
     <Button
         android:id="@+id/signUp"
