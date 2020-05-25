@@ -7,8 +7,10 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.robolectric.Robolectric;
 import org.robolectric.RobolectricTestRunner;
+import static junit.framework.TestCase.assertTrue;
 
 @RunWith(RobolectricTestRunner.class)
+
 public class MainActivityTest {
     public MainActivity activity;
 
@@ -19,5 +21,6 @@ public class MainActivityTest {
     @Test
     public void validateTextViewContent(){
         TextView appNameTextView =activity.findViewById(R.id.mainHeader);
+        assertTrue("Home service Assistant".equals(appNameTextView.getText().toString()));
     }
 }
