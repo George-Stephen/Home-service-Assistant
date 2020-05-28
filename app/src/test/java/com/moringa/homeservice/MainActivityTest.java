@@ -2,6 +2,8 @@ package com.moringa.homeservice;
 
 import android.widget.TextView;
 
+import com.moringa.homeservice.ui.MainActivity;
+
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;

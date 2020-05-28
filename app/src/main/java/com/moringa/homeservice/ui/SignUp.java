@@ -1,4 +1,4 @@
-package com.moringa.homeservice;
+package com.moringa.homeservice.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -8,6 +8,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import com.moringa.homeservice.Objects.User;
+import com.moringa.homeservice.R;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -27,12 +30,13 @@ public class SignUp extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 String Username = username.getText().toString();
-                String Email = EmailAddress.getText().toString();
+                String email = EmailAddress.getText().toString();
                 String password = Password.getText().toString();
+                User user = new User(Username,email,password);
                 Toast.makeText(SignUp.this,"Success",Toast.LENGTH_LONG).show();
                 Intent intent = new Intent(SignUp.this,Search.class);
                 intent.putExtra("Username",Username);
-                intent.putExtra("Email",Email);
+                intent.putExtra("Email",email);
                 intent.putExtra("password",password);
                 startActivity(intent);
             }

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent" android:layout_height="match_parent" android:background="@drawable/unnamed">
+    android:layout_width="match_parent" android:layout_height="match_parent" android:background="@drawable/search_background">
 
     <TextView
         android:layout_width="wrap_content"
@@ -9,31 +9,35 @@
         android:layout_marginTop="50pt"
         android:fontFamily="@font/roboto_italic"
         android:text="Home service Assistant"
-        android:textColor="@color/colorPrimaryText"
+        android:textColor="@color/colorPrimary"
         android:textSize="30sp"
         android:textStyle="bold" />
 
     <EditText
         android:id="@+id/search_bar"
-        android:layout_width="match_parent"
-        android:layout_height="41dp"
+        android:layout_width="300dp"
+        android:layout_height="37dp"
         android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
         android:layout_marginBottom="298dp"
         android:background="@color/colorDivider"
         android:hint="Search"
         android:inputType="text"
-        android:textColor="@color/colorPrimaryText"
-        android:textColorHint="@color/colorPrimaryText"
+        android:textAlignment="center"
+        android:textColor="@color/colorTextIcons"
+        android:textColorHint="@color/colorTextIcons"
         android:textSize="23sp" />
 
     <Button
         android:id="@+id/search_button"
-        android:layout_width="387dp"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_marginBottom="195dp"
+        android:layout_centerHorizontal="true"
         android:layout_marginLeft="10sp"
+        android:layout_marginBottom="195dp"
+        android:background="@android:color/darker_gray"
         android:text="Search for a solution"
-        android:textColor="@color/colorSecondaryText" />
+        android:textColor="@color/colorTextIcons" />
 
 </RelativeLayout>

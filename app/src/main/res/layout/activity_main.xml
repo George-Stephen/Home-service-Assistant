@@ -6,9 +6,10 @@
     android:paddingTop="16dp"
     android:paddingLeft="16dp"
     android:paddingRight="16dp"
-    android:background="@drawable/repair">
+    android:background="@drawable/home_background">
 
     <TextView
+        android:id="@+id/mainHeader"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
@@ -16,9 +17,8 @@
         android:fontFamily="@font/roboto_italic"
         android:text="Home service Assistant"
         android:textColor="@color/colorPrimaryDark"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        android:id="@+id/mainHeader"/>
+        android:textSize="22sp"
+        android:textStyle="bold" />
 
     <Button
         android:id="@+id/signUp"
@@ -27,7 +27,7 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="271dp"
-        android:background="@color/cardview_dark_background"
+        android:background="?android:attr/colorEdgeEffect"
         android:text="Get started"
         android:textColor="@color/colorTextIcons"
         android:visibility="visible" />
@@ -40,7 +40,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="40dp"
         android:layout_marginBottom="171dp"
-        android:background="@color/cardview_dark_background"
+        android:background="?android:attr/colorEdgeEffect"
         android:text="Login"
         android:textColor="@color/colorTextIcons" />
 

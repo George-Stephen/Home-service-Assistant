@@ -1,4 +1,4 @@
-package com.moringa.homeservice;
+package com.moringa.homeservice.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -10,6 +10,8 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.moringa.homeservice.R;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;

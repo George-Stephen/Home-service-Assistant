@@ -1,4 +1,4 @@
-package com.moringa.homeservice;
+package com.moringa.homeservice.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -10,10 +10,13 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.moringa.homeservice.Objects.Login;
+import com.moringa.homeservice.R;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class Login extends AppCompatActivity {
+public class LoginActivity extends AppCompatActivity {
     @BindView(R.id.emailAddress) EditText LoginEmail;
     @BindView(R.id.loginPassword) EditText LoginPassword;
     @BindView(R.id.loginButton) Button LoginButton;
@@ -27,20 +30,25 @@ public class Login extends AppCompatActivity {
         signUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Login.this,SignUp.class);
+                Intent intent = new Intent(LoginActivity.this,SignUp.class);
                 startActivity(intent);
             }
         });
         LoginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String email = LoginEmail.getText().toString();
-                String password  = LoginPassword.getText().toString();
-                Toast.makeText(Login.this,"Success",Toast.LENGTH_LONG).show();
-                Intent intent = new Intent(Login.this,Search.class);
-                intent.putExtra("email",email);
-                intent.putExtra("password",password);
-                startActivity(intent);
+                if (LoginEmail == null || LoginPassword == null) {
+                    Toast.makeText(LoginActivity.this,"Please enter the details required",Toast.LENGTH_LONG).show();
+                } else {
+                    String email = LoginEmail.getText().toString();
+                    String password = LoginPassword.getText().toString();
+                    Login login = new Login(email, password);
+                    Toast.makeText(LoginActivity.this, "Success", Toast.LENGTH_LONG).show();
+                    Intent intent = new Intent(LoginActivity.this, Search.class);
+                    intent.putExtra("email", email);
+                    intent.putExtra("password", password);
+                    startActivity(intent);
+                }
             }
         });
     }

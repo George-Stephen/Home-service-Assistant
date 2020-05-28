@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent" android:layout_height="match_parent" android:background="@drawable/home_repair">
+    android:layout_width="match_parent" android:layout_height="match_parent" android:background="@drawable/background">
 
     <EditText
         android:id="@+id/Username"
@@ -12,8 +12,8 @@
         android:backgroundTint="@color/colorPrimaryLight"
         android:hint="Username"
         android:inputType="text"
-        android:textColor="@color/colorPrimaryText"
-        android:textColorHint="@color/colorPrimaryText" />
+        android:textColor="@color/colorTextIcons"
+        android:textColorHint="@color/colorTextIcons" />
 
     <EditText
         android:id="@+id/EmailAddress"
@@ -25,8 +25,8 @@
         android:backgroundTint="@color/colorPrimaryLight"
         android:hint="Email Address"
         android:inputType="textEmailAddress"
-        android:textColor="@color/colorPrimaryText"
-        android:textColorHint="@color/colorPrimaryText" />
+        android:textColor="@color/colorTextIcons"
+        android:textColorHint="@color/colorTextIcons" />
 
     <Button
         android:id="@+id/signUp"
@@ -35,7 +35,7 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="91dp"
-        android:background="@color/colorPrimaryLight"
+        android:background="@color/colorSecondaryText"
         android:text="Sign up"
         android:textColor="@color/colorPrimaryText" />
 
@@ -49,6 +49,6 @@
         android:backgroundTint="@color/colorPrimaryLight"
         android:hint="Password"
         android:inputType="textPassword"
-        android:textColor="@color/colorPrimaryText"
-        android:textColorHint="@color/colorPrimaryText" />
+        android:textColor="@color/colorTextIcons"
+        android:textColorHint="@color/colorTextIcons" />
 </RelativeLayout>
