@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent" android:layout_height="match_parent">
+    android:layout_width="match_parent" android:layout_height="match_parent" android:background="@drawable/search_background">
 
     <TextView
         android:id="@+id/search_result_header"
@@ -10,13 +10,15 @@
         android:layout_marginTop="20sp"
         android:fontFamily="@font/roboto_italic"
         android:text="Search results"
+        android:textColor="@color/colorPrimary"
         android:textSize="20dp"
-        android:textStyle="bold"/>
+        android:textStyle="bold" />
     <ListView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/results_view"
         android:layout_below="@+id/search_result_header"
         android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"/>
+        android:layout_alignParentEnd="true"
+        android:textAlignment="center"/>
 </RelativeLayout>

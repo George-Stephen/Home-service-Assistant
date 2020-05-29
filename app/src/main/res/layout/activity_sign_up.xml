@@ -1,73 +1,54 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent" android:layout_height="match_parent" android:background="@drawable/home_repair">
-
-    <EditText
-        android:id="@+id/fullName"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="416dp"
-        android:backgroundTint="@color/colorPrimaryLight"
-        android:hint="Full name"
-        android:inputType="text"
-        android:textColor="@color/colorPrimaryText"
-        android:textColorHint="@color/colorPrimaryText" />
+    android:layout_width="match_parent" android:layout_height="match_parent" android:background="@drawable/background">
 
     <EditText
         android:id="@+id/Username"
-        android:layout_width="match_parent"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
         android:layout_marginBottom="338dp"
         android:backgroundTint="@color/colorPrimaryLight"
         android:hint="Username"
         android:inputType="text"
-        android:textColor="@color/colorPrimaryText"
-        android:textColorHint="@color/colorPrimaryText" />
+        android:textColor="@color/colorTextIcons"
+        android:textColorHint="@color/colorTextIcons" />
 
     <EditText
         android:id="@+id/EmailAddress"
-        android:layout_width="match_parent"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
         android:layout_marginBottom="270dp"
         android:backgroundTint="@color/colorPrimaryLight"
         android:hint="Email Address"
         android:inputType="textEmailAddress"
-        android:textColor="@color/colorPrimaryText"
-        android:textColorHint="@color/colorPrimaryText" />
-
-    <EditText
-        android:id="@+id/password"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="124dp"
-        android:backgroundTint="@color/colorPrimaryLight"
-        android:hint="Password"
-        android:inputType="textPassword"
-        android:textColor="@color/colorPrimaryText"
-        android:textColorHint="@color/colorPrimaryText" />
-
-    <EditText
-        android:id="@+id/Phone"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="193dp"
-        android:backgroundTint="@color/colorPrimaryLight"
-        android:hint="Phone number"
-        android:inputType="phone"
-        android:textColor="@color/colorPrimaryText"
-        android:textColorHint="@color/colorPrimaryText" />
+        android:textColor="@color/colorTextIcons"
+        android:textColorHint="@color/colorTextIcons" />
 
     <Button
         android:id="@+id/signUp"
-        android:layout_width="match_parent"
+        android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_marginBottom="25dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="91dp"
+        android:background="@color/colorSecondaryText"
         android:text="Sign up"
         android:textColor="@color/colorPrimaryText" />
+
+    <EditText
+        android:id="@+id/password"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="190dp"
+        android:backgroundTint="@color/colorPrimaryLight"
+        android:hint="Password"
+        android:inputType="textPassword"
+        android:textColor="@color/colorTextIcons"
+        android:textColorHint="@color/colorTextIcons" />
 </RelativeLayout>

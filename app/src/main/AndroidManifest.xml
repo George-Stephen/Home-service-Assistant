@@ -9,32 +9,32 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Search">
+        <activity android:name=".ui.Search">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".MainActivity">
+                android:value=".ui.MainActivity">
             </meta-data>
         </activity>
-        <activity android:name=".Results">
+        <activity android:name=".ui.Results">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".Search">
+                android:value=".ui.Search">
 
             </meta-data>
         </activity>
-        <activity android:name=".SignUp">
+        <activity android:name=".ui.SignUp">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".MainActivity">
+                android:value=".ui.MainActivity">
             </meta-data>
         </activity>
-        <activity android:name=".Login">
+        <activity android:name=".ui.LoginActivity">
         <meta-data
             android:name="android.support.PARENT_ACTIVITY"
-            android:value=".MainActivity">
+            android:value=".ui.MainActivity">
         </meta-data>
         </activity>
-        <activity android:name=".MainActivity">
+        <activity android:name=".ui.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

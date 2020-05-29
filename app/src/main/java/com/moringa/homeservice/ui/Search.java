@@ -1,4 +1,4 @@
-package com.moringa.homeservice;
+package com.moringa.homeservice.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+
+import com.moringa.homeservice.R;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
