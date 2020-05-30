@@ -26,7 +26,7 @@ public class Search extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 String searchKey = searchBar.getText().toString();
-                Intent intent = new Intent(Search.this, MapsActivity.class);
+                Intent intent = new Intent(Search.this, Results.class);
                 intent.putExtra("search",searchKey);
                 startActivity(intent);
             }
