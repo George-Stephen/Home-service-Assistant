@@ -11,10 +11,22 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.moringa.homeservice.Constants;
+import com.moringa.homeservice.Objects.GResults;
 import com.moringa.homeservice.R;
+import com.moringa.homeservice.Services.GoogleApi;
+import com.moringa.homeservice.Services.GoogleService;
+import com.moringa.homeservice.models.GItems;
+import com.moringa.homeservice.models.Item;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class Results extends AppCompatActivity {
     private String[] results = new String[]{
@@ -30,8 +42,6 @@ public class Results extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_results);
         ButterKnife.bind(this);
-        ArrayAdapter adapter = new ArrayAdapter(this,android.R.layout.simple_list_item_1,results);
-        mResultListView.setAdapter(adapter);
         mResultListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -42,5 +52,25 @@ public class Results extends AppCompatActivity {
         Intent intent = getIntent();
         String searchText = intent.getStringExtra("search");
         mSearchTextView.setText("Search results relating to "+ searchText);
+        GoogleApi client = GoogleService.getUser();
+        Call<GItems> call = client.customSearch(Constants.SEARCH_API_KEY,Constants.SEARCH_ID,searchText,"items(title,link)");
+        call.enqueue(new Callback<GItems>() {
+            @Override
+            public void onResponse(Call<GItems> call, Response<GItems> response) {
+                if(response.isSuccessful()){
+                    List<Item>itemList = response.body().getItems();
+                    String[] titles = new String[itemList.size()];
+                    for(int i =0;i<titles.length;i++){
+                        titles[i] = itemList.get(i).getTitle();
+                    }
+                    ArrayAdapter adapter = new ArrayAdapter(Results.this,android.R.layout.simple_list_item_1,titles);
+                    mResultListView.setAdapter(adapter);
+                }
+            }
+            @Override
+            public void onFailure(Call<GItems> call, Throwable t) {
+
+            }
+        });
     }
 }
