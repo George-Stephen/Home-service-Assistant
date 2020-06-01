@@ -1,7 +1,7 @@
 # Home-service-Assistant  
 
 ## Table of Contents
-* [Author/Developer](#Author)
+* [Author](#Author/Developer)
 * [Description](#Description)
 * [Technologies](#technologies)
 * [B.D.D](#B.D.D)
