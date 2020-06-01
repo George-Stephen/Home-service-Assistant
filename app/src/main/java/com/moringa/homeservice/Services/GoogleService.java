@@ -21,8 +21,6 @@ public class GoogleService {
                         public Response intercept(Chain chain) throws IOException {
                             Request  newRequest = chain.request().newBuilder()
                                     .addHeader("key", Constants.SEARCH_API_KEY)
-                                    .addHeader("cx",Constants.SEARCH_ID)
-                                    .addHeader("fields","items(title,link)")
                                     .build();
                                     return chain.proceed(newRequest);
                         }
@@ -34,6 +32,6 @@ public class GoogleService {
                     .addConverterFactory(GsonConverterFactory.create())
                     .build();
         }
-        return retrofit.create(GoogleApi.class);
+         return retrofit.create(GoogleApi.class);
     }
 }

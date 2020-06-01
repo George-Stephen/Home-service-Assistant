@@ -9,7 +9,5 @@ import retrofit2.http.Query;
 
 public interface GoogleApi {
     @GET("customsearch/v1")
-    Call<GItems>getResults(
-            @Query("q") String query
-    );
+    Call<GItems> customSearch(@Query("key") String key, @Query("cx") String cx, @Query("q") String query,@Query("fields")String fields);
 }

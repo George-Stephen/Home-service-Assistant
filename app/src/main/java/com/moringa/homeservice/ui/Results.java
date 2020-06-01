@@ -11,6 +11,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.moringa.homeservice.Constants;
 import com.moringa.homeservice.Objects.GResults;
 import com.moringa.homeservice.R;
 import com.moringa.homeservice.Services.GoogleApi;
@@ -52,7 +53,7 @@ public class Results extends AppCompatActivity {
         String searchText = intent.getStringExtra("search");
         mSearchTextView.setText("Search results relating to "+ searchText);
         GoogleApi client = GoogleService.getUser();
-        Call<GItems> call = client.getResults(searchText);
+        Call<GItems> call = client.customSearch(Constants.SEARCH_API_KEY,Constants.SEARCH_ID,searchText,"items(title,link)");
         call.enqueue(new Callback<GItems>() {
             @Override
             public void onResponse(Call<GItems> call, Response<GItems> response) {
@@ -66,7 +67,6 @@ public class Results extends AppCompatActivity {
                     mResultListView.setAdapter(adapter);
                 }
             }
-
             @Override
             public void onFailure(Call<GItems> call, Throwable t) {
 
