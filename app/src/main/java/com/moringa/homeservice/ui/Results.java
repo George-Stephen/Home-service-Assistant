@@ -4,10 +4,12 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -30,14 +32,11 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class Results extends AppCompatActivity {
-    private String[] results = new String[]{
-            "Assess the situation","Record the nature of the situation ","Contact the nearest service provider in case of any network query",
-            "Check if any external resources  are required","Purchase any additional resources at the nearest stores","Attempt to resolve the situation",
-            "Reassess the situation","Record if any errors have not been fixed",
-            "If the situation cannot be fixed at home,call your nearest repair assistant","If not,Go to your nearest repair man for further assistance"
-    };
+    private static final String TAG = Results.class.getSimpleName();
         @BindView(R.id.search_result_header) TextView mSearchTextView;
         @BindView(R.id.results_view) ListView mResultListView ;
+        @BindView(R.id.errorTextView)TextView mErrorText;
+        @BindView(R.id.progressbar) ProgressBar mProgressBar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,6 +57,7 @@ public class Results extends AppCompatActivity {
         call.enqueue(new Callback<GItems>() {
             @Override
             public void onResponse(Call<GItems> call, Response<GItems> response) {
+                hideProgressBar();
                 if(response.isSuccessful()){
                     List<Item>itemList = response.body().getItems();
                     String[] titles = new String[itemList.size()];
@@ -70,12 +70,32 @@ public class Results extends AppCompatActivity {
                     }
                     ResultsAdapter adapter = new ResultsAdapter(Results.this,android.R.layout.simple_list_item_1,titles,links);
                     mResultListView.setAdapter(adapter);
+                    showResults();
+                }else{
+                    showUnsuccessfulMessage();
                 }
             }
             @Override
             public void onFailure(Call<GItems> call, Throwable t) {
-
+                Log.e(TAG,"OnFailure: ",t);
+                hideProgressBar();
+                showFailureMessage();
             }
         });
+    }
+    private void showFailureMessage(){
+        mErrorText.setText("Something went wrong,Please check your internet connection and try again later");
+        mErrorText.setVisibility(View.VISIBLE);
+    }
+    private void showResults(){
+        mResultListView.setVisibility(View.VISIBLE);
+        mSearchTextView.setVisibility(View.VISIBLE);
+    }
+    private void hideProgressBar(){
+        mProgressBar.setVisibility(View.GONE);
+    }
+    private void showUnsuccessfulMessage(){
+        mErrorText.setText("Sorry,Your search is unavailable");
+        mErrorText.setVisibility(View.VISIBLE);
     }
 }
