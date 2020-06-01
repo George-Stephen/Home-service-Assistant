@@ -8,12 +8,14 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.moringa.homeservice.Constants;
+import com.moringa.homeservice.MapsActivity;
 import com.moringa.homeservice.Objects.GResults;
 import com.moringa.homeservice.R;
 import com.moringa.homeservice.Services.GoogleApi;
@@ -37,6 +39,7 @@ public class Results extends AppCompatActivity {
         @BindView(R.id.results_view) ListView mResultListView ;
         @BindView(R.id.errorTextView)TextView mErrorText;
         @BindView(R.id.progressbar) ProgressBar mProgressBar;
+        @BindView(R.id.mapButton)Button mMapButton;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -82,6 +85,13 @@ public class Results extends AppCompatActivity {
                 showFailureMessage();
             }
         });
+        mMapButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Results.this, MapsActivity.class);
+                startActivity(intent);
+            }
+        });
     }
     private void showFailureMessage(){
         mErrorText.setText("Something went wrong,Please check your internet connection and try again later");
@@ -90,6 +100,7 @@ public class Results extends AppCompatActivity {
     private void showResults(){
         mResultListView.setVisibility(View.VISIBLE);
         mSearchTextView.setVisibility(View.VISIBLE);
+        mMapButton.setVisibility(View.VISIBLE);
     }
     private void hideProgressBar(){
         mProgressBar.setVisibility(View.GONE);
