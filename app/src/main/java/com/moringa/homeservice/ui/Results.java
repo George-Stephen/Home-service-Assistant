@@ -18,6 +18,7 @@ import com.moringa.homeservice.Services.GoogleApi;
 import com.moringa.homeservice.Services.GoogleService;
 import com.moringa.homeservice.models.GItems;
 import com.moringa.homeservice.models.Item;
+import com.moringa.homeservice.ui.adapters.ResultsAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -60,10 +61,14 @@ public class Results extends AppCompatActivity {
                 if(response.isSuccessful()){
                     List<Item>itemList = response.body().getItems();
                     String[] titles = new String[itemList.size()];
+                    String[] links = new String[itemList.size()];
                     for(int i =0;i<titles.length;i++){
                         titles[i] = itemList.get(i).getTitle();
                     }
-                    ArrayAdapter adapter = new ArrayAdapter(Results.this,android.R.layout.simple_list_item_1,titles);
+                    for(int i =0;i<links.length;i++){
+                        links[i] = itemList.get(i).getLink();
+                    }
+                    ResultsAdapter adapter = new ResultsAdapter(Results.this,android.R.layout.simple_list_item_1,titles,links);
                     mResultListView.setAdapter(adapter);
                 }
             }
