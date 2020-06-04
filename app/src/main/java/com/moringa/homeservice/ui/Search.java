@@ -8,7 +8,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
-import com.moringa.homeservice.MapsActivity;
 import com.moringa.homeservice.R;
 
 import butterknife.BindView;
@@ -26,7 +25,7 @@ public class Search extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 String searchKey = searchBar.getText().toString();
-                Intent intent = new Intent(Search.this, Results.class);
+                Intent intent = new Intent(Search.this, ResultsActivity.class);
                 intent.putExtra("search",searchKey);
                 startActivity(intent);
             }
