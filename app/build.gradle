@@ -45,12 +45,18 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+    // butterknife
     implementation 'com.jakewharton:butterknife:10.2.0'
     annotationProcessor 'com.jakewharton:butterknife-compiler:10.2.0'
+    // robolectric
     testImplementation 'org.robolectric:robolectric:3.8'
+    // retrofit
     implementation 'com.squareup.retrofit2:retrofit:2.5.0'
     implementation 'com.squareup.retrofit2:converter-gson:2.5.0'
+    // okhttp3
     implementation 'com.squareup.okhttp3:okhttp:3.2.0'
     implementation 'se.akerfeldt:okhttp-signpost:1.1.0'
+    // recyclerview
+    implementation 'androidx.recyclerview:recyclerview:1.0.0'
 
 }
