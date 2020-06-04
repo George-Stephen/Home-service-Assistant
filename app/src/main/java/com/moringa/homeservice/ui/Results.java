@@ -1,6 +1,8 @@
 package com.moringa.homeservice.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -23,6 +25,7 @@ import com.moringa.homeservice.Services.GoogleService;
 import com.moringa.homeservice.models.GItems;
 import com.moringa.homeservice.models.Item;
 import com.moringa.homeservice.ui.adapters.ResultsAdapter;
+import com.moringa.homeservice.ui.adapters.ResultsListAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,27 +39,26 @@ import retrofit2.Response;
 public class Results extends AppCompatActivity {
     private static final String TAG = Results.class.getSimpleName();
         @BindView(R.id.search_result_header) TextView mSearchTextView;
-        @BindView(R.id.results_view) ListView mResultListView ;
+        @BindView(R.id.recyclerView) RecyclerView mRecyclerView;
+
         @BindView(R.id.errorTextView)TextView mErrorText;
         @BindView(R.id.progressbar) ProgressBar mProgressBar;
         @BindView(R.id.mapButton)Button mMapButton;
+         private ResultsListAdapter mAdapter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_results);
         ButterKnife.bind(this);
-        mResultListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-              String result = ((TextView)view).getText().toString();
-                Toast.makeText(Results.this,result,Toast.LENGTH_LONG).show();
-            }
-        });
+
         Intent intent = getIntent();
         String searchText = intent.getStringExtra("search");
         mSearchTextView.setText("Search results relating to "+ searchText);
+
         GoogleApi client = GoogleService.getUser();
         Call<GItems> call = client.customSearch(Constants.SEARCH_API_KEY,Constants.SEARCH_ID,searchText,"items(title,link)");
+
         call.enqueue(new Callback<GItems>() {
             @Override
             public void onResponse(Call<GItems> call, Response<GItems> response) {
@@ -71,8 +73,11 @@ public class Results extends AppCompatActivity {
                     for(int i =0;i<links.length;i++){
                         links[i] = itemList.get(i).getLink();
                     }
-                    ResultsAdapter adapter = new ResultsAdapter(Results.this,android.R.layout.simple_list_item_1,titles,links);
-                    mResultListView.setAdapter(adapter);
+                    mAdapter = new ResultsListAdapter(itemList,Results.this);
+                    mRecyclerView.setAdapter(mAdapter);
+                    RecyclerView.LayoutManager layoutManager =  new LinearLayoutManager(Results.this);
+                    mRecyclerView.setLayoutManager(layoutManager);
+                    mRecyclerView.setHasFixedSize(true);
                     showResults();
                 }else{
                     showUnsuccessfulMessage();
@@ -98,9 +103,8 @@ public class Results extends AppCompatActivity {
         mErrorText.setVisibility(View.VISIBLE);
     }
     private void showResults(){
-        mResultListView.setVisibility(View.VISIBLE);
+        mRecyclerView.setVisibility(View.VISIBLE);
         mSearchTextView.setVisibility(View.VISIBLE);
-        mMapButton.setVisibility(View.VISIBLE);
     }
     private void hideProgressBar(){
         mProgressBar.setVisibility(View.GONE);
