@@ -1,6 +1,7 @@
 package com.moringa.homeservice.ui.adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +12,10 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.moringa.homeservice.R;
 import com.moringa.homeservice.models.Item;
+import com.moringa.homeservice.ui.ResultDetailActivity;
+import com.moringa.homeservice.ui.ResultDetailFragment;
+
+import org.parceler.Parcels;
 
 import java.util.List;
 
@@ -43,7 +48,7 @@ public class ResultsListAdapter extends RecyclerView.Adapter<ResultsListAdapter.
         return mResults.size();
     }
 
-    public class ResultsViewHolder  extends  RecyclerView.ViewHolder{
+    public class ResultsViewHolder  extends  RecyclerView.ViewHolder implements View.OnClickListener{
         @BindView(R.id.result_Id) TextView mTitle;
         @BindView(R.id.linkTextView)TextView mLink;
         private Context mContext;
@@ -52,10 +57,20 @@ public class ResultsListAdapter extends RecyclerView.Adapter<ResultsListAdapter.
             super(itemView);
             ButterKnife.bind(this,itemView);
             mContext = itemView.getContext();
+            itemView.setOnClickListener(this);
         }
         public void BindResults(Item mResult){
             mTitle.setText(mResult.getTitle());
             mLink.setText(mResult.getLink());
+        }
+
+        @Override
+        public void onClick(View v) {
+        int itemPosition = getLayoutPosition();
+            Intent intent = new Intent(mContext, ResultDetailActivity.class);
+            intent.putExtra("position", itemPosition);
+            intent.putExtra("results", Parcels.wrap(mResults));
+            mContext.startActivity(intent);
         }
     }
 }

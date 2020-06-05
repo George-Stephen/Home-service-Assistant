@@ -5,10 +5,59 @@
     android:layout_height="match_parent"
     tools:context=".ui.ResultDetailFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:orientation="vertical"
+        android:background="@color/colorSecondaryText">
 
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="10dp"
+            android:paddingTop="20dp"
+            android:paddingRight="10dp"
+            android:paddingBottom="20dp"
+            android:layout_marginTop="100dp">
+
+            <TextView
+                android:id="@+id/resultTitleTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentLeft="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="50dp"
+                android:text="Result Title"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/websiteTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/resultTitleTextView"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="10dp"
+                android:drawableLeft="@drawable/baseline_open_in_browser_white_18dp"
+                android:drawablePadding="4dp"
+                android:gravity="center"
+                android:text="View on Browser"
+                android:textColor="@color/colorTextIcons"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+        </RelativeLayout>
+
+        <Button
+            android:id="@+id/saveWebsiteButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Save Website"
+            android:layout_alignParentBottom="true"
+            android:background="@color/colorAccent"
+            android:textColor="@color/colorTextIcons"
+            android:textSize="15sp"
+            android:layout_marginTop="50dp"/>
+    </LinearLayout>
 </FrameLayout>

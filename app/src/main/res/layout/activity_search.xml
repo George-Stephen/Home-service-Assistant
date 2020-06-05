@@ -39,5 +39,14 @@
         android:background="@android:color/darker_gray"
         android:text="Search for a solution"
         android:textColor="@color/colorTextIcons" />
+    <Button
+        android:id="@+id/mapButton"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="39dp"
+        android:background="@color/colorAccent"
+        android:text="Got to maps" />
 
 </RelativeLayout>

@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.moringa.homeservice.MapsActivity;
 import com.moringa.homeservice.R;
 
 import butterknife.BindView;
@@ -16,6 +17,7 @@ import butterknife.ButterKnife;
 public class Search extends AppCompatActivity {
     @BindView(R.id.search_bar) EditText searchBar;
     @BindView(R.id.search_button) Button  searchButton;
+    @BindView(R.id.mapButton)Button mMapButton;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,6 +29,13 @@ public class Search extends AppCompatActivity {
                 String searchKey = searchBar.getText().toString();
                 Intent intent = new Intent(Search.this, ResultsActivity.class);
                 intent.putExtra("search",searchKey);
+                startActivity(intent);
+            }
+        });
+        mMapButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Search.this, MapsActivity.class);
                 startActivity(intent);
             }
         });

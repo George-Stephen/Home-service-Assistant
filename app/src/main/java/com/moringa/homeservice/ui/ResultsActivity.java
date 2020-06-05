@@ -36,7 +36,6 @@ public class ResultsActivity extends AppCompatActivity {
 
         @BindView(R.id.errorTextView)TextView mErrorText;
         @BindView(R.id.progressbar) ProgressBar mProgressBar;
-        @BindView(R.id.mapButton)Button mMapButton;
          private ResultsListAdapter mAdapter;
 
     @Override
@@ -81,13 +80,6 @@ public class ResultsActivity extends AppCompatActivity {
                 Log.e(TAG,"OnFailure: ",t);
                 hideProgressBar();
                 showFailureMessage();
-            }
-        });
-        mMapButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(ResultsActivity.this, MapsActivity.class);
-                startActivity(intent);
             }
         });
     }
