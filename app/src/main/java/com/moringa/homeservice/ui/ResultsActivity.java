@@ -8,26 +8,19 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.moringa.homeservice.Constants;
 import com.moringa.homeservice.MapsActivity;
-import com.moringa.homeservice.Objects.GResults;
 import com.moringa.homeservice.R;
 import com.moringa.homeservice.Services.GoogleApi;
 import com.moringa.homeservice.Services.GoogleService;
 import com.moringa.homeservice.models.GItems;
 import com.moringa.homeservice.models.Item;
-import com.moringa.homeservice.ui.adapters.ResultsAdapter;
 import com.moringa.homeservice.ui.adapters.ResultsListAdapter;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
@@ -36,14 +29,13 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class Results extends AppCompatActivity {
-    private static final String TAG = Results.class.getSimpleName();
+public class ResultsActivity extends AppCompatActivity {
+    private static final String TAG = ResultsActivity.class.getSimpleName();
         @BindView(R.id.search_result_header) TextView mSearchTextView;
         @BindView(R.id.recyclerView) RecyclerView mRecyclerView;
 
         @BindView(R.id.errorTextView)TextView mErrorText;
         @BindView(R.id.progressbar) ProgressBar mProgressBar;
-        @BindView(R.id.mapButton)Button mMapButton;
          private ResultsListAdapter mAdapter;
 
     @Override
@@ -73,9 +65,9 @@ public class Results extends AppCompatActivity {
                     for(int i =0;i<links.length;i++){
                         links[i] = itemList.get(i).getLink();
                     }
-                    mAdapter = new ResultsListAdapter(itemList,Results.this);
+                    mAdapter = new ResultsListAdapter(itemList, ResultsActivity.this);
                     mRecyclerView.setAdapter(mAdapter);
-                    RecyclerView.LayoutManager layoutManager =  new LinearLayoutManager(Results.this);
+                    RecyclerView.LayoutManager layoutManager =  new LinearLayoutManager(ResultsActivity.this);
                     mRecyclerView.setLayoutManager(layoutManager);
                     mRecyclerView.setHasFixedSize(true);
                     showResults();
@@ -88,13 +80,6 @@ public class Results extends AppCompatActivity {
                 Log.e(TAG,"OnFailure: ",t);
                 hideProgressBar();
                 showFailureMessage();
-            }
-        });
-        mMapButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(Results.this, MapsActivity.class);
-                startActivity(intent);
             }
         });
     }

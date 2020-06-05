@@ -3,7 +3,10 @@ package com.moringa.homeservice.models;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
+import java.util.List;
+import org.parceler.Parcel;
 
+@Parcel
 public class Item {
 
     @SerializedName("title")

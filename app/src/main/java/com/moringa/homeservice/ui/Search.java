@@ -17,6 +17,7 @@ import butterknife.ButterKnife;
 public class Search extends AppCompatActivity {
     @BindView(R.id.search_bar) EditText searchBar;
     @BindView(R.id.search_button) Button  searchButton;
+    @BindView(R.id.mapButton)Button mMapButton;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,8 +27,15 @@ public class Search extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 String searchKey = searchBar.getText().toString();
-                Intent intent = new Intent(Search.this, Results.class);
+                Intent intent = new Intent(Search.this, ResultsActivity.class);
                 intent.putExtra("search",searchKey);
+                startActivity(intent);
+            }
+        });
+        mMapButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Search.this, MapsActivity.class);
                 startActivity(intent);
             }
         });
