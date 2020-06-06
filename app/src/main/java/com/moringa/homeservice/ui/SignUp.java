@@ -34,7 +34,7 @@ public class SignUp extends AppCompatActivity {
                 String password = Password.getText().toString();
                 User user = new User(Username,email,password);
                 Toast.makeText(SignUp.this,"Success",Toast.LENGTH_LONG).show();
-                Intent intent = new Intent(SignUp.this,Search.class);
+                Intent intent = new Intent(SignUp.this, SearchActivity.class);
                 intent.putExtra("Username",Username);
                 intent.putExtra("Email",email);
                 intent.putExtra("password",password);

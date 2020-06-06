@@ -5,15 +5,14 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.moringa.homeservice.Constants;
-import com.moringa.homeservice.MapsActivity;
 import com.moringa.homeservice.R;
 import com.moringa.homeservice.Services.GoogleApi;
 import com.moringa.homeservice.Services.GoogleService;
@@ -37,6 +36,8 @@ public class ResultsActivity extends AppCompatActivity {
         @BindView(R.id.errorTextView)TextView mErrorText;
         @BindView(R.id.progressbar) ProgressBar mProgressBar;
          private ResultsListAdapter mAdapter;
+         private SharedPreferences mSharedPreferences;
+         private String mRecentSearch;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,10 +48,13 @@ public class ResultsActivity extends AppCompatActivity {
         Intent intent = getIntent();
         String searchText = intent.getStringExtra("search");
         mSearchTextView.setText("Search results relating to "+ searchText);
-
+//        mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(ResultsActivity.this);
+//        mRecentSearch = mSharedPreferences.getString(Constants.PREFERENCES_SEARCH_KEY,null);
         GoogleApi client = GoogleService.getUser();
-        Call<GItems> call = client.customSearch(Constants.SEARCH_API_KEY,Constants.SEARCH_ID,searchText,"items(title,link)");
-
+ //       if(mRecentSearch != null) {
+ //           searchText = mRecentSearch;
+ //       }
+        Call<GItems> call = client.customSearch(Constants.SEARCH_API_KEY, Constants.SEARCH_ID, searchText, "items(title,link)");
         call.enqueue(new Callback<GItems>() {
             @Override
             public void onResponse(Call<GItems> call, Response<GItems> response) {

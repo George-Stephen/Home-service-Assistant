@@ -9,11 +9,7 @@ import org.parceler.Parcel;
 @Parcel
 public class Item {
 
-    @SerializedName("title")
-    @Expose
     private String title;
-    @SerializedName("link")
-    @Expose
     private String link;
 
     /**

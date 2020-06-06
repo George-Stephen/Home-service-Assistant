@@ -9,8 +9,13 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.moringa.homeservice.Constants;
 import com.moringa.homeservice.R;
 import com.moringa.homeservice.models.Item;
 
@@ -27,6 +32,7 @@ import butterknife.ButterKnife;
 public class ResultDetailFragment extends Fragment implements View.OnClickListener {
     @BindView(R.id.resultTitleTextView) TextView mTitle;
     @BindView(R.id.websiteTextView) TextView mWebsiteLabel;
+    @BindView(R.id.saveWebsiteButton)Button mSaveWebsite;
     private Item mResult;
 
     public ResultDetailFragment() {
@@ -53,6 +59,7 @@ public class ResultDetailFragment extends Fragment implements View.OnClickListen
         ButterKnife.bind(this,view);
         mTitle.setText(mResult.getTitle());
         mWebsiteLabel.setOnClickListener(this);
+        mSaveWebsite.setOnClickListener(this);
         return  view;
     }
 
@@ -62,6 +69,12 @@ public class ResultDetailFragment extends Fragment implements View.OnClickListen
             Intent webIntent = new Intent(Intent.ACTION_VIEW,
                     Uri.parse(mResult.getLink()));
             startActivity(webIntent);
+        }
+        if (v == mSaveWebsite){
+            DatabaseReference websiteRef = FirebaseDatabase.getInstance()
+                    .getReference(Constants.FIREBASE_CHILD_WEBSITES);
+            websiteRef.push().setValue(mResult);
+            Toast.makeText(getContext(), "Saved", Toast.LENGTH_SHORT).show();
         }
     }
 }
