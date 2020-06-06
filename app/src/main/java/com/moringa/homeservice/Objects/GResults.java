@@ -2,11 +2,11 @@ package com.moringa.homeservice.Objects;
 
 public class GResults {
     private String title ;
-    private String Url ;
+    private String link ;
 
-    public GResults(String title, String url) {
+    public GResults(String title, String link) {
         this.title = title;
-        Url = url;
+        link = link;
     }
 
     public String getTitle() {
@@ -17,11 +17,11 @@ public class GResults {
         this.title = title;
     }
 
-    public String getUrl() {
-        return Url;
+    public String getLink() {
+        return link;
     }
 
-    public void setUrl(String url) {
-        Url = url;
+    public void setUrl(String link) {
+        link = link;
     }
 }

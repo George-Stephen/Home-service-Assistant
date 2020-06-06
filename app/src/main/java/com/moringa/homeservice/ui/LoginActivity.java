@@ -44,7 +44,7 @@ public class LoginActivity extends AppCompatActivity {
                     String password = LoginPassword.getText().toString();
                     Login login = new Login(email, password);
                     Toast.makeText(LoginActivity.this, "Success", Toast.LENGTH_LONG).show();
-                    Intent intent = new Intent(LoginActivity.this, Search.class);
+                    Intent intent = new Intent(LoginActivity.this, SearchActivity.class);
                     intent.putExtra("email", email);
                     intent.putExtra("password", password);
                     startActivity(intent);
