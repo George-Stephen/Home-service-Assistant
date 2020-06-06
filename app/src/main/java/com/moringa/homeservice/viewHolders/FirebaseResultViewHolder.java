@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.view.View;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.firebase.database.DataSnapshot;
@@ -44,17 +45,17 @@ public class FirebaseResultViewHolder extends RecyclerView.ViewHolder implements
         final ArrayList<Item> results = new ArrayList<>();
         DatabaseReference reference = FirebaseDatabase.getInstance()
                 .getReference(Constants.FIREBASE_CHILD_WEBSITES);
-        reference.addListenerForSingleValueEvent(new ValueEventListener() {
+        reference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange( DataSnapshot dataSnapshot) {
                 for(DataSnapshot snapshot : dataSnapshot.getChildren()){
                     results.add(snapshot.getValue(Item.class));
-                    int itemPosition = getLayoutPosition();
-                    Intent intent = new Intent(mContext, ResultDetailActivity.class);
-                    intent.putExtra("position", itemPosition + "");
-                    intent.putExtra("results", Parcels.wrap(results));
-                    mContext.startActivity(intent);
                 }
+                int itemPosition = getLayoutPosition();
+                Intent intent = new Intent(mContext,ResultDetailActivity.class);
+                intent.putExtra("position",itemPosition +"");
+                intent.putExtra("results",Parcels.wrap(results));
+                mContext.startActivity(intent);
             }
 
             @Override
