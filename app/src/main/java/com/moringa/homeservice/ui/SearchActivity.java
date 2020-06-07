@@ -47,7 +47,7 @@ public class SearchActivity extends AppCompatActivity {
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                 FirebaseUser user = firebaseAuth.getCurrentUser();
                 if(user != null){
-                    getSupportActionBar().setTitle("Hi " + user.getDisplayName());
+                    getSupportActionBar().setTitle("Hi " + user.getDisplayName() + " !");
                 }
             }
         };
