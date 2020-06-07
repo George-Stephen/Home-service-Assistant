@@ -15,6 +15,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.moringa.homeservice.Objects.User;
 import com.moringa.homeservice.R;
 
@@ -29,6 +30,7 @@ public class SignUp extends AppCompatActivity {
     @BindView(R.id.ConfirmPassword)EditText ConfirmPassword;
     @BindView(R.id.signUp) Button SignButton;
     private FirebaseAuth mAuth;
+    private FirebaseAuth.AuthStateListener mAuthListener;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +42,7 @@ public class SignUp extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 createUser();
+                createAuthStateListener();
             }
         });
     }
@@ -54,12 +57,38 @@ public class SignUp extends AppCompatActivity {
                 if(task.isSuccessful()){
                     Toast.makeText(SignUp.this,"Authentication success",Toast.LENGTH_LONG).show();
                     Log.d(TAG, "Authentication successful");
-                    Intent intent = new Intent(SignUp.this, SearchActivity.class);
-                    startActivity(intent);
                 } else{
                     Toast.makeText(SignUp.this,"Authentication failed",Toast.LENGTH_LONG).show();
                 }
             }
         });
+    }
+    private void createAuthStateListener(){
+        mAuthListener = new FirebaseAuth.AuthStateListener() {
+            @Override
+            public void onAuthStateChanged(FirebaseAuth firebaseAuth) {
+                final FirebaseUser user = firebaseAuth.getCurrentUser();
+                if(user != null){
+                    Intent intent = new Intent(SignUp.this,SearchActivity.class);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                    startActivity(intent);
+                    finish();
+                }
+            }
+        };
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        mAuth.addAuthStateListener(mAuthListener);
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        if (mAuthListener != null) {
+            mAuth.removeAuthStateListener(mAuthListener);
+        }
     }
 }
