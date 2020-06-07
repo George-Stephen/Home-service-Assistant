@@ -30,22 +30,21 @@ public class FirebaseResultViewHolder extends RecyclerView.ViewHolder implements
         super(itemView);
         this.mView = itemView;
         this.mContext = itemView.getContext();
-        itemView.setOnClickListener(this);
     }
     public void bindResult(Item mResult){
         TextView mTitle = (TextView)mView.findViewById(R.id.result_Id);
         TextView mLink = (TextView)mView.findViewById(R.id.linkTextView);
 
         mTitle.setText(mResult.getTitle());
-        mTitle.setText(mResult.getLink());
+        mLink.setText(mResult.getLink());
     }
 
     @Override
     public void onClick(View v) {
         final ArrayList<Item> results = new ArrayList<>();
         DatabaseReference reference = FirebaseDatabase.getInstance()
-                .getReference(Constants.FIREBASE_CHILD_WEBSITES);
-        reference.addValueEventListener(new ValueEventListener() {
+                .getReference(Constants.FIREBASE_CHILD_SEARCH_HISTORY);
+        reference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange( DataSnapshot dataSnapshot) {
                 for(DataSnapshot snapshot : dataSnapshot.getChildren()){
@@ -59,7 +58,7 @@ public class FirebaseResultViewHolder extends RecyclerView.ViewHolder implements
             }
 
             @Override
-            public void onCancelled( DatabaseError databaseError) {
+            public void onCancelled(@NonNull DatabaseError databaseError) {
 
             }
         });

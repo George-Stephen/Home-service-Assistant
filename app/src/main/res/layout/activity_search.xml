@@ -6,7 +6,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="50pt"
+        android:layout_marginTop="35pt"
         android:fontFamily="@font/roboto_italic"
         android:text="Home service Assistant"
         android:textColor="@color/colorPrimary"
@@ -39,17 +39,6 @@
         android:background="@android:color/darker_gray"
         android:text="Search for a solution"
         android:textColor="@color/colorTextIcons" />
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="My Saved websites"
-        android:id="@+id/savedWebsitesButton"
-        android:background="@color/colorAccent"
-        android:textColor="@color/colorTextIcons"
-        android:visibility="visible"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"/>
 
     <Button
         android:id="@+id/mapButton"

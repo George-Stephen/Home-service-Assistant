@@ -1,8 +1,14 @@
 package com.moringa.homeservice.Objects;
 
+import org.parceler.Parcel;
+
+
 public class GResults {
     private String title ;
     private String link ;
+
+    public GResults() {
+    }
 
     public GResults(String title, String link) {
         this.title = title;

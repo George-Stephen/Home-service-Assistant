@@ -24,7 +24,6 @@ public class SearchActivity extends AppCompatActivity {
     @BindView(R.id.search_bar) EditText searchBar;
     @BindView(R.id.search_button) Button  searchButton;
     @BindView(R.id.mapButton)Button mMapButton;
-    @BindView(R.id.savedWebsitesButton)Button mSavedWebsitesButton;
   //  private SharedPreferences mSharedPreferences;
  //   private SharedPreferences.Editor mEditor;
   private DatabaseReference mSearchHistoryReference;
@@ -73,13 +72,6 @@ public class SearchActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(SearchActivity.this, MapsActivity.class);
-                startActivity(intent);
-            }
-        });
-        mSavedWebsitesButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(SearchActivity.this,SavedResultsListActivity.class);
                 startActivity(intent);
             }
         });
