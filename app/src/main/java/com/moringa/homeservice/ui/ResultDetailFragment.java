@@ -13,8 +13,6 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.moringa.homeservice.Constants;
@@ -75,8 +73,7 @@ public class ResultDetailFragment extends Fragment implements View.OnClickListen
         if (v == mSaveWebsite){
             DatabaseReference websiteRef = FirebaseDatabase.getInstance()
                     .getReference(Constants.FIREBASE_CHILD_WEBSITES);
-            websiteRef.push();
-            websiteRef.setValue(mResult);
+            websiteRef.push().setValue(mResult);
             Toast.makeText(getContext(), "Saved", Toast.LENGTH_SHORT).show();
         }
     }
