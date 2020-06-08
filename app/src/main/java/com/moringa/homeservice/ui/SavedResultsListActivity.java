@@ -24,7 +24,6 @@ import com.moringa.homeservice.Objects.GResults;
 import com.moringa.homeservice.R;
 import com.moringa.homeservice.models.Item;
 import com.moringa.homeservice.ui.adapters.ResultsListAdapter;
-import com.moringa.homeservice.viewHolders.FirebaseResultViewHolder;
 
 import java.util.ArrayList;
 
