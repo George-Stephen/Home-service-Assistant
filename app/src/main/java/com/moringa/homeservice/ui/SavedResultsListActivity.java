@@ -14,20 +14,28 @@ import android.widget.ProgressBar;
 
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.moringa.homeservice.Constants;
 import com.moringa.homeservice.Objects.GResults;
 import com.moringa.homeservice.R;
 import com.moringa.homeservice.models.Item;
+import com.moringa.homeservice.ui.adapters.ResultsListAdapter;
 import com.moringa.homeservice.viewHolders.FirebaseResultViewHolder;
+
+import java.util.ArrayList;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class SavedResultsListActivity extends AppCompatActivity {
     private DatabaseReference mResultReference;
-    private FirebaseRecyclerAdapter<Item,FirebaseResultViewHolder> mFireBaseAdapter;
+    private ResultsListAdapter mFireBaseAdapter;
+    private ArrayList<Item>results = new ArrayList<>();
+
 
     @BindView(R.id.recyclerView) RecyclerView mRecyclerView;
     @BindView(R.id.progressbar) ProgressBar mProgressBar;
@@ -37,48 +45,28 @@ public class SavedResultsListActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_results);
         ButterKnife.bind(this);
+            hideProgressBar();
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        mResultReference = FirebaseDatabase.getInstance().getReference(Constants.FIREBASE_CHILD_SEARCH_HISTORY);
-        setUpFirebaseAdapter();
-    }
-    private void setUpFirebaseAdapter(){
-        hideProgressBar();
-        FirebaseRecyclerOptions<Item> firebaseRecyclerOptions = new FirebaseRecyclerOptions.Builder<Item>()
-                .setQuery(mResultReference,Item.class)
-                .build();
-        mFireBaseAdapter = new FirebaseRecyclerAdapter<Item, FirebaseResultViewHolder>(firebaseRecyclerOptions) {
-            @Override
-            protected void onBindViewHolder(@NonNull FirebaseResultViewHolder firebaseResultViewHolder, int i, @NonNull Item item) {
-                firebaseResultViewHolder.bindResult(item);
-            }
-
-            @NonNull
-            @Override
-            public FirebaseResultViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-                View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.results_list_item,parent,false);
-                return new FirebaseResultViewHolder(view);
-            }
-        };
-        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(SavedResultsListActivity.this);
-        mRecyclerView.setLayoutManager(layoutManager);
-        mRecyclerView.setAdapter(mFireBaseAdapter);
         mRecyclerView.setHasFixedSize(true);
-        showResults();
-    }
 
+        mResultReference = FirebaseDatabase.getInstance().getReference(Constants.FIREBASE_CHILD_WEBSITES);
+        mResultReference.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+              for(DataSnapshot snapshot : dataSnapshot.getChildren()){
+                  results.add(snapshot.getValue(Item.class));
+                  mRecyclerView.setAdapter(new ResultsListAdapter(results,SavedResultsListActivity.this));
+                  showResults();
 
-    @Override
-    protected void onStart() {
-        super.onStart();
-        mFireBaseAdapter.startListening();
-    }
+              }
+            }
 
-    @Override
-    protected void onStop() {
-        super.onStop();
-        if(mFireBaseAdapter != null){
-            mFireBaseAdapter.stopListening();
-        }
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
 
     }
     public void hideProgressBar(){
