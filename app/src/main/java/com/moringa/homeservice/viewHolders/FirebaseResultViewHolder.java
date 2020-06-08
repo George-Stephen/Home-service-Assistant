@@ -22,7 +22,7 @@ import org.parceler.Parcels;
 
 import java.util.ArrayList;
 
-public class FirebaseResultViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+public class FirebaseResultViewHolder extends RecyclerView.ViewHolder {
     View mView;
     Context mContext;
 
@@ -39,28 +39,4 @@ public class FirebaseResultViewHolder extends RecyclerView.ViewHolder implements
         mLink.setText(mResult.getLink());
     }
 
-    @Override
-    public void onClick(View v) {
-        final ArrayList<Item> results = new ArrayList<>();
-        DatabaseReference reference = FirebaseDatabase.getInstance()
-                .getReference(Constants.FIREBASE_CHILD_SEARCH_HISTORY);
-        reference.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange( DataSnapshot dataSnapshot) {
-                for(DataSnapshot snapshot : dataSnapshot.getChildren()){
-                    results.add(snapshot.getValue(Item.class));
-                }
-                int itemPosition = getLayoutPosition();
-                Intent intent = new Intent(mContext,ResultDetailActivity.class);
-                intent.putExtra("position",itemPosition +"");
-                intent.putExtra("results",Parcels.wrap(results));
-                mContext.startActivity(intent);
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-        });
-    }
 }

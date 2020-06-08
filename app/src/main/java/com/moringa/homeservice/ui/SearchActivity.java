@@ -107,6 +107,12 @@ public class SearchActivity extends AppCompatActivity {
             logout();
             return true;
         }
+        if(id == R.id.saved){
+            Intent intent = new Intent(SearchActivity.this,SavedResultsListActivity.class);
+            startActivity(intent);
+            finish();
+            return true;
+        }
         return super.onOptionsItemSelected(item);
     }
     private void logout(){
