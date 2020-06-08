@@ -6,6 +6,7 @@ import org.parceler.Parcel;
 public class GResults {
     private String title ;
     private String link ;
+    private String pushId;
 
     public GResults() {
     }
@@ -29,5 +30,12 @@ public class GResults {
 
     public void setUrl(String link) {
         link = link;
+    }
+    public String getPushId() {
+        return pushId;
+    }
+
+    public void setPushId(String pushId) {
+        this.pushId = pushId;
     }
 }

@@ -12,6 +12,7 @@ public class Item {
     private String title;
     private String link;
 
+
     /**
      * No args constructor for use in serialization
      * 
