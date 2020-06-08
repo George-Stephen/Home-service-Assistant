@@ -17,14 +17,15 @@ This is an android application meant to help users with their repairs that may o
 * Android Studio as an environment for development
 * Java to make the basic functionality
 * Xml to make the user interface 
-* FireBase as a storage unit for the application/user data
+* FireBase as a storage unit for the application/user data 
+* Firebase auth to authenticate the user
 * Android java  Library 
 ## B.D.D
 This application has utilised security as a major aspect by using login and signup forms to easen the users security.The user is able to type <br/>
 the situation he\she is facing.The application utilises the use of Google API to generate proper guidelines on how to solve the problem.<br/>
 The application assists the user to find assistance using google maps API to locate the closest help
 ## Functionality
-The app has a major functions incorporated within the code.For starters,the application start page has two buttons which are set on click to direct to two pages: Log-in and sign-up.Next, we have the search page where the user is able to enter the current situation based on any query.The user,after enter the query,the user is redirected to the results page where he/she can select the title depicting the situation the user is in.The user is able to click the title and he/she will be able to open the link to a browser and view the steps to fix the application.The users is able to click on maps button and will be redirected to a maps window to search where to go and get help or who to call
+The app has a major functions incorporated within the code.For starters,the application start page has two buttons which are set on click to direct to two pages: Log-in and sign-up.Next, we have the search page where the user is able to enter the current situation based on any query.The user,after enter the query,the user is redirected to the results page where he/she can select the title depicting the situation the user is in.The user is able to click the title and he/she will be able to open the link to a browser and view the steps to fix the application.The users is able to click on maps button and will be redirected to a maps window to search where to go and get help or who to call.The user is able to save a website to help him/her to save time to search for it.
 ## Launch
 The application can be deployed in any android-driven smartphone.There are two ways to install this application :
 * ### Using Android Emulator
